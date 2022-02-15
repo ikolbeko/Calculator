@@ -11,9 +11,6 @@ let buttonSize = UIScreen.main.bounds.size.width / 4.5
 let buttonColorLigthGray = Color.secondary
 let buttonFontSize: CGFloat = 30
 
-let expression = NSExpression(format:"5*4-1+3")
-let value = expression.expressionValue(with: nil, context: nil) as? Int
-
 struct ContentView: View {
     
     @State private var equation: String = "0"
@@ -21,7 +18,7 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.black
-                .ignoresSafeArea()
+                .edgesIgnoringSafeArea(.all)
             VStack(alignment: .trailing) {
                 Text("\(equation)")
                     .foregroundColor(.white)
@@ -32,7 +29,7 @@ struct ContentView: View {
                         HStack {
                             Button (action: {equation = "0"}, label: { Text("AC") })
                             Button (action: {}, label: { Image(systemName: "plus.forwardslash.minus") })
-                            Button (action: {}, label: { Image(systemName: "percent") })
+                            Button (action: {equation = percent(equation)}, label: { Image(systemName: "percent") })
                         }
                         .buttonStyle(ButtonStuleLightGray())
                         HStack {
