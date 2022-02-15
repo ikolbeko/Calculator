@@ -11,6 +11,7 @@ class ViewModel {
     
     var equation = Observe("0")
     
+    
     func addSymbol(_ symbol: String) {
         
         switch equation.value + symbol {
@@ -19,11 +20,15 @@ class ViewModel {
         case "00", "01", "02", "03", "04", "05", "06", "07", "08", "09":
             equation.value = symbol
         default:
+            if symbol == "." && equation.value.last == "." {
+                break
+            }
             equation.value += symbol
         }
     }
     
     func calculating() {
+        
         let expr = NSExpression(format: equation.value)
         if let result = expr.expressionValue(with: nil, context: nil) as? NSNumber {
             equation.value = "\(result.doubleValue)"
@@ -33,6 +38,7 @@ class ViewModel {
     }
     
     func percent() {
+        
         let expr = NSExpression(format: equation.value + "/100")
         if let result = expr.expressionValue(with: nil, context: nil) as? NSNumber {
             equation.value = "\(result.doubleValue)"

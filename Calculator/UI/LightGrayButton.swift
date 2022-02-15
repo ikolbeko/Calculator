@@ -16,7 +16,7 @@ struct LightGrayButton: View {
             Button (action: {}, label: { Image(systemName: "plus.forwardslash.minus") })
             Button (action: { viewModel.percent() }, label: { Image(systemName: "percent") })
         }
-        .buttonStyle(SetButtonStule(buttonColor: .secondary, labelColor: .black))
+        .buttonStyle(SetButtonStule(buttonColor: Color("LightGrayColor"), labelColor: .black))
     }
 }
 

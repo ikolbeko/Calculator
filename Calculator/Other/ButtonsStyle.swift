@@ -30,10 +30,11 @@ struct SetButtonStule: ButtonStyle {
 struct SetZeroButtonStule: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
+        
         configuration.label
             .padding(30)
             .frame(width: buttonSize * 2, height: buttonSize, alignment: .leading)
-            .background(.gray)
+            .background(Color("DarkGrayColor"))
             .foregroundColor(.white)
             .clipShape(Capsule())
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
