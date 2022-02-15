@@ -10,8 +10,16 @@ import Foundation
 
 extension ContentView {
     
-    func addSymbol(_ symbol: String, to equation: String) -> String {
-        equation == "0" && symbol == "." ? "0." : equation == "0" ? symbol : equation + symbol
+    
+    func addSymbol(_ symbol: String, to equation: String) -> String {        
+        switch equation + symbol {
+        case "0+", "0/", "0*", "0-":
+            return "0"
+        case "00", "01", "02", "03", "04", "05", "06", "07", "08", "09":
+            return symbol
+        default:
+            return equation + symbol
+        }
     }
     
     func calculating(_ equation: String) -> String{
