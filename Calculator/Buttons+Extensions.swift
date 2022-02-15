@@ -6,8 +6,26 @@
 //
 
 import SwiftUI
+import Foundation
 
 extension ContentView {
+    
+    func addSymbol(_ symbol: String, to equation: String) -> String {
+        if equation == "0" {
+            return symbol
+        } else {
+            return equation + symbol
+        }
+    }
+    
+    func calculating(_ equation: String) -> String{
+        let expr = NSExpression(format: equation)
+        if let result = expr.expressionValue(with: nil, context: nil) as? NSNumber {
+            return "\(result.doubleValue)"
+        } else {
+            return "0"
+        }
+    }
     
     struct ButtonStuleLightGray: ButtonStyle {
         func makeBody(configuration: Configuration) -> some View {
