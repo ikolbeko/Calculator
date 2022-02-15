@@ -8,7 +8,6 @@
 import SwiftUI
 
 let buttonSize = UIScreen.main.bounds.size.width / 4.5
-let buttonColorLigthGray = Color.secondary
 let buttonFontSize: CGFloat = 30
 
 struct ContentView: View {
@@ -31,33 +30,30 @@ struct ContentView: View {
                             Button (action: {}, label: { Image(systemName: "plus.forwardslash.minus") })
                             Button (action: {equation = percent(equation)}, label: { Image(systemName: "percent") })
                         }
-                        .buttonStyle(ButtonStuleLightGray())
+                        .buttonStyle(SetButtonStule(buttonColor: .secondary, labelColor: .black))
                         HStack {
                             Button (action: {equation = addSymbol("7", to: equation)}, label: { Text("7") })
                             Button (action: {equation = addSymbol("8", to: equation)}, label: { Text("8") })
                             Button (action: {equation = addSymbol("9", to: equation)}, label: { Text("9") })
                         }
-                        .buttonStyle(ButtonStuleDarkGray())
+                        .buttonStyle(SetButtonStule(buttonColor: .gray, labelColor: .white))
                         HStack {
                             Button (action: {equation = addSymbol("4", to: equation)}, label: { Text("4") })
                             Button (action: {equation = addSymbol("5", to: equation)}, label: { Text("5") })
                             Button (action: {equation = addSymbol("6", to: equation)}, label: { Text("6") })
                         }
-                        .buttonStyle(ButtonStuleDarkGray())
+                        .buttonStyle(SetButtonStule(buttonColor: .gray, labelColor: .white))
                         HStack {
                             Button (action: {equation = addSymbol("1", to: equation)}, label: { Text("1") })
                             Button (action: {equation = addSymbol("2", to: equation)}, label: { Text("2") })
                             Button (action: {equation = addSymbol("3", to: equation)}, label: { Text("3") })
                         }
-                        .buttonStyle(ButtonStuleDarkGray())
+                        .buttonStyle(SetButtonStule(buttonColor: .gray, labelColor: .white))
                         HStack {
                             Button (action: {equation = addSymbol("0", to: equation)}, label: { Text("0") })
-                                .buttonStyle(ZeroButtonStule())
-                                .frame(width: buttonSize * 2, height: buttonSize, alignment: .leading)
-                                .background(Color.secondary)
-                                .clipShape(Capsule())
+                                .buttonStyle(SetZeroButtonStule())
                             Button (action: {equation = addSymbol(".", to: equation)}, label: { Text(",") })
-                                .buttonStyle(ButtonStuleDarkGray())
+                                .buttonStyle(SetButtonStule(buttonColor: .gray, labelColor: .white))
                         }
                     }
                     VStack {
@@ -67,7 +63,7 @@ struct ContentView: View {
                         Button (action: {equation = addSymbol("+", to: equation)}, label: { Image(systemName: "plus") })
                         Button (action: {equation = calculating(equation)}, label: { Image(systemName: "equal") })
                     }
-                    .buttonStyle(ButtonStuleOrange())
+                    .buttonStyle(SetButtonStule(buttonColor: .orange, labelColor: .white))
                 }
             }
         }
